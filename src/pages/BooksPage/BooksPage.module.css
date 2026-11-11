@@ -1,3 +1,23 @@
+.title {
+    width: auto;
+    max-width: 760px;
+}
+
+.intro {
+    max-width: 680px;
+    margin: 0 0 28px;
+    color: #5c4636;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.catalogTitle {
+    margin: 0 0 20px;
+    color: #422c20;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
 .booksList {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));

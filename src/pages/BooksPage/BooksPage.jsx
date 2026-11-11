@@ -7,8 +7,8 @@ import useDocumentMeta from "../../hooks/useDocumentMeta"
 
 function BooksPage() {
     useDocumentMeta({
-        title: "My Library – Discover Books & Build Your Personal Library",
-        description: "Discover books, explore authors and genres, and build your own personal digital library with My Library. Keep your favorite books organized in one place.",
+        title: "My Library – Book Tracker App to Organize Your Book Collection",
+        description: "Track and organize your book collection with My Library. Discover books in the catalog, view book details, and save titles to your personal book library.",
         path: "/"
     })
 
@@ -65,6 +65,7 @@ function BooksPage() {
     return (
         <>
             <h1
+                className={styles.title}
                 onClick={() => {
                     setIsLoading(true)
                     fetch("https://openlibrary.org/search.json?q=popular")
@@ -75,8 +76,14 @@ function BooksPage() {
                         })
                 }}
             >
-                Discover Books
+                Discover Books and Track Your Book Collection
             </h1>
+
+            <p className={styles.intro}>
+                My Library is a book tracker app for your book collection. Browse the book catalog,
+                search for titles, open a book to see its details, and add it to your personal book
+                library to keep your collection organized in one place.
+            </p>
 
             <SearchInput
             search={search}
@@ -93,22 +100,25 @@ function BooksPage() {
             setLanguage={setLanguage}
             />
 
-            {isLoading ? (
-                <p>Loading...</p>
-            ) : (
-                <div className={styles.booksList}>
-                {
-                    filteredBooks.map((book) => (
+            <section aria-labelledby="book-catalog-heading">
+                <h2 id="book-catalog-heading" className={styles.catalogTitle}>Book Catalog</h2>
+                {isLoading ? (
+                    <p>Loading...</p>
+                ) : (
+                    <div className={styles.booksList}>
+                    {
+                        filteredBooks.map((book) => (
 
-                    <BookCard
-                    book={book}
-                    key={book.key}
-                    onImageError={handleImageError}
-                    />
-                    ))
-                }
-            </div>
-            )}
+                        <BookCard
+                        book={book}
+                        key={book.key}
+                        onImageError={handleImageError}
+                        />
+                        ))
+                    }
+                </div>
+                )}
+            </section>
             
         </>
     )
