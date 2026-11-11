@@ -104,7 +104,7 @@ function BookPage() {
                         <p className={styles.description}>{bookDescription}</p>
 
                         <button className={styles.favoriteButton} onClick={isFavorite ? handleRemoveBook : handleAddBook}>
-                            {isFavorite ? "Remove from My Books" : "Add to My Books"}
+                            {isFavorite ? "Remove from My Library" : "Add to My Library"}
                         </button>
                     </div>
                     </article>
