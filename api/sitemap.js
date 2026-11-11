@@ -1,35 +1,25 @@
 const SITE_URL = "https://www.mylibrary.social"
 const API_URL = "https://openlibrary.org"
-const CONCURRENCY = 10
 const REQUEST_TIMEOUT_MS = 8000
 
 async function fetchJson(url) {
-    const response = await fetch(url, { signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) })
+    const response = await fetch(url, {
+        headers: { "User-Agent": "MyLibrary sitemap (https://www.mylibrary.social)" },
+        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS)
+    })
     if (!response.ok) throw new Error(`${response.status} ${url}`)
     return response.json()
 }
 
-// Same query and cover filter as the homepage catalog (BooksPage.jsx).
+// Same query and cover filter as the homepage catalog (BooksPage.jsx). Every returned
+// work is a real Open Library record, so no per-book verification requests are needed.
+// `fields` only trims the response; it does not change which books are returned.
 async function getCatalogBookIds() {
-    const data = await fetchJson(`${API_URL}/search.json?q=popular`)
+    const data = await fetchJson(`${API_URL}/search.json?q=popular&fields=key,cover_i`)
     const ids = data.docs
         .filter(book => book.cover_i && book.key?.startsWith("/works/"))
         .map(book => book.key.split("/")[2])
     return [...new Set(ids)]
-}
-
-// Keep only books whose detail page can actually load (mirrors BookPage.jsx).
-async function filterRetrievable(ids) {
-    const valid = []
-    for (let i = 0; i < ids.length; i += CONCURRENCY) {
-        const results = await Promise.allSettled(
-            ids.slice(i, i + CONCURRENCY).map(id => fetchJson(`${API_URL}/works/${id}.json`).then(() => id))
-        )
-        results.forEach(result => {
-            if (result.status === "fulfilled") valid.push(result.value)
-        })
-    }
-    return valid
 }
 
 function buildSitemap(paths) {
@@ -43,7 +33,7 @@ export default async function handler(req, res) {
 
     try {
         const ids = await getCatalogBookIds()
-        bookPaths = (await filterRetrievable(ids)).map(id => `/books/${id}`)
+        bookPaths = ids.map(id => `/books/${id}`)
     } catch {
         ok = false
     }
