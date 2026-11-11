@@ -80,9 +80,9 @@ function BooksPage() {
             </h1>
 
             <p className={styles.intro}>
-                My Library is a book tracker app for your book collection. Browse the book catalog,
-                search for titles, open a book to see its details, and add it to your personal book
-                library to keep your collection organized in one place.
+                My Library is a book tracker app and personal book library for discovering books and
+                organizing your book collection. Browse the book catalog, search for titles, open a
+                book to see its details, and add it to your library to keep your collection in one place.
             </p>
 
             <SearchInput

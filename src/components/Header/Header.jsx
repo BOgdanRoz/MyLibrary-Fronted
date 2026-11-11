@@ -4,11 +4,11 @@ import styles from "./Header.module.css"
 function Header() {
     return (
         <header className={styles.header}>
-            <p className={styles.logo}>My Library</p>
+            <p className={styles.logo}><Link to="/">My Library</Link></p>
             
             <nav className={styles.links} aria-label="Main navigation">
-                <Link to="/books">Library</Link>
-                <Link to="/my-books">My Library</Link>
+                <Link to="/">Book Catalog</Link>
+                <Link to="/my-books">My Books</Link>
             </nav>
         </header>
     )
