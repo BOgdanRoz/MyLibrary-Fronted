@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /my-books
+
+Sitemap: https://www.mylibrary.social/sitemap.xml

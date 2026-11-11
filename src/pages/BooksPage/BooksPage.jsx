@@ -3,8 +3,15 @@ import SearchInput from "../../components/SearchInput/SearchInput"
 import Filters from "../../components/Filters/Filters"
 import styles from "./BooksPage.module.css"
 import { useEffect, useState } from "react"
+import useDocumentMeta from "../../hooks/useDocumentMeta"
 
 function BooksPage() {
+    useDocumentMeta({
+        title: "My Library – Discover Books & Build Your Personal Library",
+        description: "Discover books, explore authors and genres, and build your own personal digital library with My Library. Keep your favorite books organized in one place.",
+        path: "/"
+    })
+
     const [isLoading, setIsLoading] = useState(true)
     const [books, setBooks] = useState([])
     const [search, setSearch] = useState("")
@@ -68,7 +75,7 @@ function BooksPage() {
                         })
                 }}
             >
-                Books
+                Discover Books
             </h1>
 
             <SearchInput

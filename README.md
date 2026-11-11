@@ -1,4 +1,4 @@
-# The Reading Room
+# My Library
 
 A modern book library application built with React.
 
@@ -6,7 +6,7 @@ Users can search for books, filter search results, view detailed information abo
 
 ## Live Demo
 
-[The Reading Room](https://my-library-reading-room.vercel.app/)
+[My Library](https://my-library-reading-room.vercel.app/)
 
 ## Features
 

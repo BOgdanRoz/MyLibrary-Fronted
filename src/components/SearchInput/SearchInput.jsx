@@ -3,7 +3,7 @@ import styles from "./SearchInput.module.css"
 function SearchInput({ search, setSearch, handleSearch }) {
 
     return (
-        <div className={styles.search}>
+        <div className={styles.search} role="search">
             <input
             className={styles.input}
             value={search}

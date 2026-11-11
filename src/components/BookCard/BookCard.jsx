@@ -7,7 +7,7 @@ function BookCard({ book, onImageError}) {
         <Link to={`/books/${bookId}`}>
             <div className={styles.bookCard}>
                 <img src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
-                     alt="BookImg"
+                     alt={`Cover of ${book.title}`}
                      onError={() => onImageError(book.key)} />
                 <div className={styles.bookInfo}>
                     <p>{book.title}</p>

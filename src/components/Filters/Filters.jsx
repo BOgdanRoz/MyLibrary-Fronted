@@ -23,6 +23,7 @@ function Filters({ minYear, setMinYear, maxYear, setMaxYear, language, setLangua
                             className={styles.input}
                             type="number"
                             placeholder="From year"
+                            aria-label="Published from year"
                             value={minYear}
                             onChange={(event) => setMinYear(event.target.value)}    
                         />
@@ -30,12 +31,14 @@ function Filters({ minYear, setMinYear, maxYear, setMaxYear, language, setLangua
                             className={styles.input}
                             type="number"
                             placeholder="To year"
+                            aria-label="Published to year"
                             value={maxYear}
                             onChange={(event) => setMaxYear(event.target.value)}
                         />
                     </div>
 
-                    <select 
+                    <select
+                        aria-label="Language"
                         className={styles.select}
                         value={language}
                         onChange={(event) => setLanguage(event.target.value)}

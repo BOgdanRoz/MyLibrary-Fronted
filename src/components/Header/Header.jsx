@@ -4,12 +4,12 @@ import styles from "./Header.module.css"
 function Header() {
     return (
         <header className={styles.header}>
-            <p className={styles.logo}>The Reading Room</p>
+            <p className={styles.logo}>My Library</p>
             
-            <div className={styles.links}>
+            <nav className={styles.links} aria-label="Main navigation">
                 <Link to="/books">Library</Link>
                 <Link to="/my-books">My Library</Link>
-            </div>
+            </nav>
         </header>
     )
 }
