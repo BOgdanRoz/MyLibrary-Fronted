@@ -94,7 +94,7 @@ function BookPage() {
             ) : (
                 <>
                     <article className={styles.bookPage}>
-                    <img className={styles.cover} src={`https://covers.openlibrary.org/b/id/${book?.covers?.[0]}-M.jpg`} alt={book?.title ? `Cover of ${book.title}` : "Book cover"} />  
+                    <img className={styles.cover} src={`https://covers.openlibrary.org/b/id/${book?.covers?.[0]}-M.jpg`} alt={book?.title ? `Cover of ${book.title}` : "Book cover"}/>
             
                     <div className={styles.details}>
                         <h1>{book?.title}</h1>
