@@ -125,3 +125,21 @@ Author
 
 Bogdan Rozl
 ```
+
+## Sanity CMS (homepage text)
+
+The homepage heading, intro paragraph and "Book Catalog" section heading can be edited in Sanity. Books and user collections are not stored in Sanity. If Sanity is not configured or unavailable, the site uses the built-in text in `src/content/homeFallback.js`.
+
+**Frontend** – copy `.env.example` to `.env.local` and set the public identifiers `VITE_SANITY_PROJECT_ID`, `VITE_SANITY_DATASET` and `VITE_SANITY_API_VERSION`. Never put tokens in `VITE_` variables.
+
+**Studio** (`studio/`):
+
+```bash
+cd studio
+npm install
+cp .env.example .env   # set SANITY_STUDIO_PROJECT_ID
+npm run dev            # local Studio
+npm run deploy         # host the Studio on sanity.studio
+```
+
+Create a single "Homepage" document (it uses the fixed ID `homePage`) and publish it. Add your site origins (production, `http://localhost:5173`, Preview domains) under CORS origins in the Sanity project settings.

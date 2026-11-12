@@ -4,6 +4,7 @@ import Filters from "../../components/Filters/Filters"
 import styles from "./BooksPage.module.css"
 import { useEffect, useState } from "react"
 import useDocumentMeta from "../../hooks/useDocumentMeta"
+import useHomeContent from "../../hooks/useHomeContent"
 
 function BooksPage() {
     useDocumentMeta({
@@ -11,6 +12,8 @@ function BooksPage() {
         description: "Track and organize your book collection with My Library. Discover books in the catalog, view book details, and save titles to your personal book library.",
         path: "/"
     })
+
+    const content = useHomeContent()
 
     const [isLoading, setIsLoading] = useState(true)
     const [books, setBooks] = useState([])
@@ -76,13 +79,11 @@ function BooksPage() {
                         })
                 }}
             >
-                Discover Books and Track Your Book Collection
+                {content.heading}
             </h1>
 
             <p className={styles.intro}>
-                My Library is a book tracker app and personal book library for discovering books and
-                organizing your book collection. Browse the book catalog, search for titles, open a
-                book to see its details, and add it to your library to keep your collection in one place.
+                {content.intro}
             </p>
 
             <SearchInput
@@ -101,7 +102,7 @@ function BooksPage() {
             />
 
             <section aria-labelledby="book-catalog-heading">
-                <h2 id="book-catalog-heading" className={styles.catalogTitle}>Book Catalog</h2>
+                <h2 id="book-catalog-heading" className={styles.catalogTitle}>{content.catalogHeading}</h2>
                 {isLoading ? (
                     <p>Loading...</p>
                 ) : (
